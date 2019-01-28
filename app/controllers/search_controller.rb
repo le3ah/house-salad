@@ -1,3 +1,5 @@
+require 'pry'
+
 class SearchController < ApplicationController
   def index
     
