@@ -1,1 +1,9 @@
 <%= @search.members.count %> Results
+<% @search.members.each do |member| %>
+  <ul>
+    <li class="name"><%= member.name %></li>
+    <li class="role"><%= member.role %></li>
+    <li class="party"><%= member.party %></li>
+    <li class="district"><%= member.district %></li>
+  </ul>
+<% end %>
