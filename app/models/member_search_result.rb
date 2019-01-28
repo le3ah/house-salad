@@ -12,6 +12,8 @@ class MemberSearchResult
     end
     response = conn.get("/congress/v1/members/house/#{@state}/current.json")
     data = JSON.parse(response.body, symbolize_names: true)
-    data[:results]
+    data[:results].map do |raw_member|
+      Member.new(raw_member)
+    end
   end
 end

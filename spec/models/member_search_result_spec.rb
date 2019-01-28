@@ -12,6 +12,7 @@ describe MemberSearchResult do
       it "returns members with a valid state" do
         member_search_result = MemberSearchResult.new("CO")
         expect(member_search_result.members.count).to eq(7)
+        expect(member_search_result.members.first).to be_a(Member)
       end
     end
   end
