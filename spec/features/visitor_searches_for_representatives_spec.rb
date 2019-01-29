@@ -2,11 +2,10 @@ require 'rails_helper'
 
 feature 'visitor searches for member' do
   scenario 'with valid state' do
-    json_response = File.open("./spec/fixtures/members_of_the_house.json")
-    stub_request(:get, "https://api.propublica.org/congress/v1/members/house/CO/current.json").
-
-      to_return(status: 200, body: json_response)
-
+    filename = "members_of_the_house.json"
+    url = "https://api.propublica.org/congress/v1/members/house/CO/current.json"
+    stub_get_json(url, filename)
+    
     visit "/"
 
     select "Colorado", from: "state"
