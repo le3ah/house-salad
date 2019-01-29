@@ -8,6 +8,11 @@ describe PropublicaService do
   end
 
   it "gets members by state" do
+    json_response = File.open("./spec/fixtures/members_of_the_house.json")
+    stub_request(:get, "https://api.propublica.org/congress/v1/members/house/CO/current.json").
+
+      to_return(status: 200, body: json_response)
+
     propublica_service = PropublicaService.new("CO")
 
     member = propublica_service.members_by_state[:results].first
